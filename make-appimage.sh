@@ -3,18 +3,16 @@
 set -eu
 
 ARCH=$(uname -m)
-VERSION=$(pacman -Q sonic3air-git | awk '{print $2; exit}') # example command to get version of application here
-export ARCH VERSION
+export ARCH
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.bg.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
 export ICON=/opt/sonic3air/data/icon.png
-export DESKTOP=/usr/share/applications/sonic3air.desktop
 export DEPLOY_OPENGL=1
 export DEPLOY_PIPEWIRE=1
 
 # Deploy dependencies
-quick-sharun /opt/sonic3air/sonic3air_linux
+quick-sharun ./AppDir/bin/sonic3air_linux
 
 # Additional changes can be done in between here
 
