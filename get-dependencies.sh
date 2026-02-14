@@ -38,7 +38,7 @@ cmake . \
     -DBUILD_SDL_STATIC=ON \
     -DUSE_DISCORD=ON \
     -DBUILD_OXYGEN_ENGINEAPP=OFF ..
-make -j$(nproc)
+make -j$(nproc) -finput-charset=UTF-8
 
 cd ../../
 ./sonic3air_linux -dumpcppdefinitions # Needs to do this to generate saves/scripts.bin
