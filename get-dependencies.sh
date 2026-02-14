@@ -42,8 +42,9 @@ cmake . \
     -DUSE_DISCORD=ON \
     -DBUILD_OXYGEN_ENGINEAPP=OFF
 make -j$(nproc) CXXFLAGS="-finput-charset=UTF-8"
-
+ls
 cd ../../
+ls
 ./sonic3air_linux -dumpcppdefinitions # Needs to do this to generate saves/scripts.bin
 ./sonic3air_linux -pack # Generates the other data bin files
 mv enginedata.bin ../../../AppDir/bin/data
