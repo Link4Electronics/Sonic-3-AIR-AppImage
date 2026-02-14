@@ -33,16 +33,16 @@ git clone "$REPO" ./sonic3air
 echo "$VERSION" > ~/version
 
 mkdir -p ./AppDir/bin/data
-cd ./sonic3air
-mkdir -p build && cd build
-cmake .. \
+cd ./sonic3air/Oxygen/sonic3air/build/_cmake
+#mkdir -p build && cd build
+cmake . \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SDL_STATIC=ON \
     -DUSE_DISCORD=ON \
     -DBUILD_OXYGEN_ENGINEAPP=OFF ..
 make -j$(nproc)
 
-cd ./Oxygen/sonic3air
+cd ../../
 ./sonic3air_linux -dumpcppdefinitions # Needs to do this to generate saves/scripts.bin
 ./sonic3air_linux -pack # Generates the other data bin files
 mv enginedata.bin ../../../AppDir/bin/data
