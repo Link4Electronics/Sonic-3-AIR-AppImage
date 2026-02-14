@@ -7,7 +7,7 @@ export ARCH
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.bg.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-export ICON=/opt/sonic3air/data/icon.png
+export ICON=https://raw.githubusercontent.com/Eukaryot/sonic3air/refs/heads/main/Oxygen/sonic3air/data/images/icon.png
 export DEPLOY_OPENGL=1
 export DEPLOY_PIPEWIRE=1
 
