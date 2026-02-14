@@ -35,7 +35,6 @@ cd ./sonic3air/Oxygen/sonic3air/build/_cmake
 #mkdir -p build && cd build
 cmake . \
     -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_SDL_STATIC=ON \
     -DUSE_DISCORD=ON \
     -DBUILD_OXYGEN_ENGINEAPP=OFF ..
 make -j$(nproc) CXXFLAGS="-finput-charset=UTF-8"
