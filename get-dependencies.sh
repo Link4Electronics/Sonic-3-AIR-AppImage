@@ -57,4 +57,5 @@ if [ "${ARCH}" = x86_64 ]; then
     mv -v source/external/discord_game_sdk/lib/$(uname -m)/libdiscord_game_sdk.so ../../../AppDir/bin
 fi
 cp -r saves ../../../AppDir/bin
+mv -v scripts ../../../AppDir/bin
 mv -v config.json ../../../AppDir/bin
