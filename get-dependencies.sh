@@ -50,7 +50,8 @@ cmake . \
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_DISCORD=ON \
     -DBUILD_OXYGEN_ENGINEAPP=OFF \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DBUILD_SDL_STATIC=ON #For stable v24.12.05.0 only
 make -j$(nproc)
 
 cd ../../../../sonic3air
