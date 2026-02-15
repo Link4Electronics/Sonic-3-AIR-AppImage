@@ -45,7 +45,8 @@ cd ./sonic3air/Oxygen/sonic3air/build/_cmake
 cmake . \
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_DISCORD=ON \
-    -DBUILD_OXYGEN_ENGINEAPP=OFF
+    -DBUILD_OXYGEN_ENGINEAPP=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make -j$(nproc)
 
 cd ../../../../sonic3air
