@@ -41,7 +41,10 @@ mkdir -p ./AppDir/bin/data
 #cd ./sonic3air
 #sed -i '113,125s|^|//|w /dev/stdout' Oxygen/sonic3air/source/sonic3air/client/crowdcontrol/CrowdControlClient.cpp
 #cd ..
-cd ./sonic3air/Oxygen/sonic3air/build/_cmake
+cd ./soncic3air
+patch -p1 < ./0001-fix-sdl-pipewire.patch
+cd Oxygen/sonic3air/build/_cmake
+#cd ./sonic3air/Oxygen/sonic3air/build/_cmake
 cmake . \
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_DISCORD=ON \
