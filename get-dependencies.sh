@@ -53,6 +53,8 @@ mv audiodata.bin ../../../AppDir/bin/data
 mv audioremaster.bin ../../../AppDir/bin/data
 cp data/metadata.json ../../../AppDir/bin/data
 mv -v sonic3air_linux ../../../AppDir/bin
-mv -v source/external/discord_game_sdk/lib/$(uname -m)/libdiscord_game_sdk.so ../../../AppDir/bin
+if [ "${ARCH}" = x86_64 ]; then
+    mv -v source/external/discord_game_sdk/lib/$(uname -m)/libdiscord_game_sdk.so ../../../AppDir/bin
+fi
 cp -r saves ../../../AppDir/bin
 mv -v config.json ../../../AppDir/bin
