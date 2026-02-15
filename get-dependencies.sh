@@ -23,18 +23,22 @@ get-debloated-pkgs --add-common --prefer-nano
 #make-aur-package
 
 # If the application needs to be manually built that has to be done down here
-echo "Making nightly build of Sonic-3-AIR..."
+#echo "Making nightly build of Sonic-3-AIR..."
+#echo "---------------------------------------------------------------"
+#REPO="https://github.com/Eukaryot/sonic3air"
+#VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
+#git clone "$REPO" ./sonic3air
+echo "Making stable build of Sonic-3-AIR..."
 echo "---------------------------------------------------------------"
 REPO="https://github.com/Eukaryot/sonic3air"
-VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
-git clone "$REPO" ./sonic3air
+VERSION="$(git ls-remote --tags --sort="v:refname" https://github.com/lethal-guitar/RigelEngine | tail -n1 | sed 's/.*\///; s/\^{}//; s/^v//')"
+git clone --branch v"$VERSION" --single-branch "$REPO" ./sonic3air
 echo "$VERSION" > ~/version
 
 mkdir -p ./AppDir/bin/data
-cd ./sonic3air
-#sed -i '113,125s/^/#/' /Oxygen/sonic3air/source/sonic3air/client/crowdcontrol/CrowdControlClient.cpp
-sed -i '113,125s|^|//|w /dev/stdout' Oxygen/sonic3air/source/sonic3air/client/crowdcontrol/CrowdControlClient.cpp
-cd ..
+#cd ./sonic3air
+#sed -i '113,125s|^|//|w /dev/stdout' Oxygen/sonic3air/source/sonic3air/client/crowdcontrol/CrowdControlClient.cpp
+#cd ..
 cd ./sonic3air/Oxygen/sonic3air/build/_cmake
 cmake . \
     -DCMAKE_BUILD_TYPE=Release \
