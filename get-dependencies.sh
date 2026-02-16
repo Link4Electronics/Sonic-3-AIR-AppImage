@@ -12,8 +12,6 @@ pacman -Syu --noconfirm \
     libdecor       \
     libxcomposite  \
     minizip        \
-    pipewire-audio \
-    pipewire-jack  \
     sdl2
 
 echo "Installing debloated packages..."
