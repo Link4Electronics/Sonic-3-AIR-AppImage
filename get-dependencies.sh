@@ -70,10 +70,10 @@ else
     export CXXFLAGS="${CXXFLAGS:-} -Dfopen64=fopen -Dfseeko64=fseeko -Dftello64=ftello -D_FILE_OFFSET_BITS=64"
     cmake . \
         -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_OXYGEN_ENGINEAPP=OFF \
-        -DUSE_DISCORD=OFF \
+        -DUSE_DISCORD=false \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -DBUILD_SDL_STATIC=OFF # For stable v24.12.05.0 only
+        -DSDL_SHARED=ON \
+        -DSDL_STATIC=OFF # For stable v24.12.05.0 only
     make -j$(nproc)
 
     cd ../../../../sonic3air
