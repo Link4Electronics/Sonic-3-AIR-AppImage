@@ -12,8 +12,6 @@ pacman -Syu --noconfirm \
     libdecor       \
     libxcomposite  \
     minizip        \
-    pipewire-audio \
-    pipewire-jack  \
     sdl2
 
 echo "Installing debloated packages..."
@@ -60,17 +58,19 @@ else
     #sed -i '113,125s|^|//|w /dev/stdout' Oxygen/sonic3air/source/sonic3air/client/crowdcontrol/CrowdControlClient.cpp
     #cd ..
     cd ./sonic3air
-    #patch -p1 < ../0001-fix-sdl-pipewire.patch
     sed -i 's/pw_node_enum_params(node->proxy/pw_node_enum_params((struct pw_node*)node->proxy/g' framework/external/sdl/SDL2/src/audio/pipewire/SDL_pipewire.c
     cd Oxygen/sonic3air/build/_cmake
     #cd ./sonic3air/Oxygen/sonic3air/build/_cmake
-    sed -i 's/set(CMAKE_CXX_FLAGS_RELEASE "-O3")/set(CMAKE_CXX_FLAGS_RELEASE "-O0")/' CMakeLists.txt
+    #sed -i 's/set(CMAKE_CXX_FLAGS_RELEASE "-O3")/set(CMAKE_CXX_FLAGS_RELEASE "-O0")/' CMakeLists.txt
+    # -DUSE_DISCORD=false for aarch64
+    export CFLAGS="${CFLAGS:-} -Dfopen64=fopen -Dfseeko64=fseeko -Dftello64=ftello -D_FILE_OFFSET_BITS=64"
+    export CXXFLAGS="${CXXFLAGS:-} -Dfopen64=fopen -Dfseeko64=fseeko -Dftello64=ftello -D_FILE_OFFSET_BITS=64"
     cmake . \
         -DCMAKE_BUILD_TYPE=Release \
-        -DUSE_DISCORD=ON \
-        -DBUILD_OXYGEN_ENGINEAPP=OFF \
+        -DUSE_DISCORD=false \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -DBUILD_SDL_STATIC=OFF #For stable v24.12.05.0 only
+        -DSDL_SHARED=ON \
+        -DSDL_STATIC=OFF # For stable v24.12.05.0 only
     make -j$(nproc)
 
     cd ../../../../sonic3air
