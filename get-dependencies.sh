@@ -50,7 +50,7 @@ else
     cmake . \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_DISCORD=OFF \
-        -DBUILD_SDL_STATIC=Off
+        -DBUILD_SDL_STATIC=OFF
     make -j$(nproc)
 
     cd ../../../../sonic3air
