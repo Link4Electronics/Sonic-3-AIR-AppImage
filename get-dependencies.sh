@@ -29,7 +29,7 @@ if [ "${ARCH}" = x86_64 ]; then
     wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-preview/sonic3air_game.tar.gz
     echo "$VERSION" > ~/version
 
-    bsdtar -xvf sonic3air_game.tar.gz
+    tar -xvf sonic3air_game.tar.gz
     rm -f *.tar.gz
     mkdir -p ./AppDir/bin
 
@@ -61,6 +61,6 @@ else
     mv -v enginedata.bin gamedata.bin audiodata.bin audioremaster.bin data/metadata.json ../../../AppDir/bin/data
     mv -v sonic3air_linux config.json ../../../AppDir/bin
     wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-preview/sonic3air_game.tar.gz
-    bsdtar -xvf sonic3air_game.tar.gz sonic3air_game/data/scripts.bin --strip-components=2 -C ../../../AppDir/bin/data
+    tar -xvf sonic3air_game.tar.gz sonic3air_game/data/scripts.bin --strip-components=2 -C ../../../AppDir/bin/data
 fi
 
