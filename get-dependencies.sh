@@ -62,7 +62,6 @@ else
     mv -v sonic3air_linux config.json ../../../AppDir/bin
     wget https://github.com/Eukaryot/sonic3air/releases/download/$VERSION-preview/sonic3air_game.tar.gz
     tar -xvf sonic3air_game.tar.gz --wildcards "*/scripts.bin"
-    #find . -name "scripts.bin" -exec mv -v {} ../../../AppDir/bin/data/ \;
     mv -v sonic3air_game/data/scripts.bin ../../../AppDir/bin/data
     rm -f *.tar.gz
     rm -rf sonic3air_game
